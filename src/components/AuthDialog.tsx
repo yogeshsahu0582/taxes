@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Mail } from "lucide-react";
+import { Mail, AlertCircle } from "lucide-react";
 
 interface AuthDialogProps {
   open: boolean;
@@ -97,13 +97,22 @@ export const AuthDialog = ({ open, onOpenChange, mode, onModeChange }: AuthDialo
         </DialogHeader>
         
         <div className="space-y-6">
+          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-start space-x-3">
+            <AlertCircle className="h-5 w-5 text-amber-600 mt-0.5 flex-shrink-0" />
+            <div className="text-sm text-amber-800">
+              <p className="font-medium">Google OAuth Setup Required</p>
+              <p className="mt-1">Please enable Google provider in Supabase Authentication settings to use Google signup.</p>
+            </div>
+          </div>
+          
           <Button 
             onClick={handleGoogleSignIn}
             variant="outline" 
-            className="w-full h-12 text-base"
+            className="w-full h-12 text-base opacity-50 cursor-not-allowed"
+            disabled
           >
             <Mail className="mr-2 h-5 w-5" />
-            Continue with Google
+            Continue with Google (Setup Required)
           </Button>
           
           <div className="relative">

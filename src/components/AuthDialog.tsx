@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/hooks/useAuth";
 import { Mail, AlertCircle } from "lucide-react";
 
 interface AuthDialogProps {
@@ -20,6 +20,7 @@ export const AuthDialog = ({ open, onOpenChange, mode, onModeChange }: AuthDialo
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
+  const { signUp, signIn } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,15 +28,7 @@ export const AuthDialog = ({ open, onOpenChange, mode, onModeChange }: AuthDialo
 
     try {
       if (mode === 'signup') {
-        const { error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: {
-            data: {
-              full_name: name,
-            }
-          }
-        });
+        const { error } = await signUp(email, password, name);
         
         if (error) throw error;
         
@@ -44,10 +37,7 @@ export const AuthDialog = ({ open, onOpenChange, mode, onModeChange }: AuthDialo
           description: "Please check your email to verify your account.",
         });
       } else {
-        const { error } = await supabase.auth.signInWithPassword({
-          email,
-          password,
-        });
+        const { error } = await signIn(email, password);
         
         if (error) throw error;
         
@@ -65,25 +55,6 @@ export const AuthDialog = ({ open, onOpenChange, mode, onModeChange }: AuthDialo
       });
     } finally {
       setLoading(false);
-    }
-  };
-
-  const handleGoogleSignIn = async () => {
-    try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: window.location.origin
-        }
-      });
-      
-      if (error) throw error;
-    } catch (error: any) {
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: error.message,
-      });
     }
   };
 
@@ -106,7 +77,6 @@ export const AuthDialog = ({ open, onOpenChange, mode, onModeChange }: AuthDialo
           </div>
           
           <Button 
-            onClick={handleGoogleSignIn}
             variant="outline" 
             className="w-full h-12 text-base opacity-50 cursor-not-allowed"
             disabled

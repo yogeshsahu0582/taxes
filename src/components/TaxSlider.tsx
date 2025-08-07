@@ -36,7 +36,7 @@ export const TaxSlider = () => {
       color: "from-green-500 to-green-600"
     },
     {
-      title: "Bank-Grade Security",
+      title: "Advanced Security",
       subtitle: "Your data is completely secure",
       description: "Enterprise-level encryption and security protocols ensure your sensitive financial information remains protected.",
       image: taxSecurity,

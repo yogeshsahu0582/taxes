@@ -1,7 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, FileText, Shield, Zap } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 export const Hero = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleStartFiling = () => {
+    if (user) {
+      navigate('/dashboard');
+    } else {
+      // This will be handled by the Header component's auth dialog
+      document.getElementById('auth-button')?.click();
+    }
+  };
+
   return (
     <section className="relative py-20 md:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
@@ -26,8 +40,12 @@ export const Hero = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:shadow-lg transition-all duration-300">
-                Start Filing Now
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-primary to-accent hover:shadow-lg transition-all duration-300"
+                onClick={handleStartFiling}
+              >
+                {user ? 'Go to Dashboard' : 'Start Filing Now'}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button variant="outline" size="lg">
@@ -36,14 +54,6 @@ export const Hero = () => {
             </div>
 
             <div className="flex items-center space-x-6 text-sm text-muted-foreground">
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="h-4 w-4 text-green-500" />
-                <span>100% Secure</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="h-4 w-4 text-green-500" />
-                <span>Expert Reviewed</span>
-              </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-4 w-4 text-green-500" />
                 <span>E-Filing Ready</span>
@@ -58,7 +68,7 @@ export const Hero = () => {
                   <FileText className="h-8 w-8 text-primary mb-3" />
                   <h3 className="font-semibold mb-2">Upload Documents</h3>
                   <p className="text-sm text-muted-foreground">
-                    PAN, Aadhar, Form 16 & Bank Statements
+                    Aadhar, Form 16 & Bank Statements
                   </p>
                 </div>
                 
@@ -76,13 +86,13 @@ export const Hero = () => {
                   <Shield className="h-8 w-8 text-green-500 mb-3" />
                   <h3 className="font-semibold mb-2">Secure & Compliant</h3>
                   <p className="text-sm text-muted-foreground">
-                    Bank-grade security & IT dept compliance
+                    Advanced security & compliance
                   </p>
                 </div>
                 
                 <div className="bg-primary p-6 rounded-xl text-white">
-                  <div className="text-2xl font-bold mb-1">5 Min</div>
-                  <p className="text-primary-foreground/80">Average filing time</p>
+                  <div className="text-2xl font-bold mb-1">Fast</div>
+                  <p className="text-primary-foreground/80">Quick processing</p>
                 </div>
               </div>
             </div>

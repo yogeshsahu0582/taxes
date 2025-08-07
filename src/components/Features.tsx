@@ -13,7 +13,7 @@ export const Features = () => {
     {
       icon: FileText,
       title: "Document Upload",
-      description: "Upload PAN Card, Aadhar Card, Bank Statements, and Form 16 with drag-and-drop simplicity.",
+      description: "Upload Aadhar Card, Bank Statements, and Form 16 with drag-and-drop simplicity.",
       color: "text-blue-500"
     },
     {
@@ -36,7 +36,7 @@ export const Features = () => {
     },
     {
       icon: Shield,
-      title: "Bank-Grade Security",
+      title: "Advanced Security",
       description: "Your data is protected with military-grade encryption and secure cloud storage.",
       color: "text-red-500"
     },

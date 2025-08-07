@@ -64,6 +64,7 @@ export const Header = () => {
             ) : (
               <>
                 <Button 
+                  id="auth-button"
                   variant="ghost" 
                   onClick={() => handleAuthClick('login')}
                   className="hover:bg-primary/10 transition-all duration-300"

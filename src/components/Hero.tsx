@@ -18,7 +18,7 @@ export const Hero = () => {
 
   return (
     <section className="relative py-20 md:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5 animate-gradient-x bg-[length:400%_400%]" />
       
       <div className="container relative">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -64,16 +64,16 @@ export const Hero = () => {
           <div className="relative">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
-                <div className="bg-card p-6 rounded-xl border shadow-sm">
-                  <FileText className="h-8 w-8 text-primary mb-3" />
+                <div className="bg-card p-6 rounded-xl border shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 group">
+                  <FileText className="h-8 w-8 text-primary mb-3 group-hover:scale-110 transition-transform" />
                   <h3 className="font-semibold mb-2">Upload Documents</h3>
                   <p className="text-sm text-muted-foreground">
                     Aadhar, Form 16 & Bank Statements
                   </p>
                 </div>
                 
-                <div className="bg-card p-6 rounded-xl border shadow-sm">
-                  <Zap className="h-8 w-8 text-accent mb-3" />
+                <div className="bg-card p-6 rounded-xl border shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 group animate-pulse">
+                  <Zap className="h-8 w-8 text-accent mb-3 group-hover:scale-110 transition-transform" />
                   <h3 className="font-semibold mb-2">AI Processing</h3>
                   <p className="text-sm text-muted-foreground">
                     Automatic data extraction & validation
@@ -82,16 +82,16 @@ export const Hero = () => {
               </div>
               
               <div className="space-y-4 mt-8">
-                <div className="bg-card p-6 rounded-xl border shadow-sm">
-                  <Shield className="h-8 w-8 text-green-500 mb-3" />
+                <div className="bg-card p-6 rounded-xl border shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 group">
+                  <Shield className="h-8 w-8 text-green-500 mb-3 group-hover:scale-110 transition-transform" />
                   <h3 className="font-semibold mb-2">Secure & Compliant</h3>
                   <p className="text-sm text-muted-foreground">
                     Advanced security & compliance
                   </p>
                 </div>
                 
-                <div className="bg-primary p-6 rounded-xl text-white">
-                  <div className="text-2xl font-bold mb-1">Fast</div>
+                <div className="bg-primary p-6 rounded-xl text-white hover:shadow-glow transition-all duration-300 hover:scale-105 cursor-pointer group">
+                  <div className="text-2xl font-bold mb-1 group-hover:scale-110 transition-transform">Fast</div>
                   <p className="text-primary-foreground/80">Quick processing</p>
                 </div>
               </div>

@@ -71,19 +71,19 @@ export const Footer = () => {
               <div className="flex items-center gap-3 group">
                 <Mail className="h-4 w-4 text-primary group-hover:scale-110 transition-transform" />
                 <span className="group-hover:text-primary transition-colors cursor-pointer">
-                  support@taxes.com
+                  ysahu0582@gmail.com
                 </span>
               </div>
               <div className="flex items-center gap-3 group">
                 <Phone className="h-4 w-4 text-primary group-hover:scale-110 transition-transform" />
                 <span className="group-hover:text-primary transition-colors cursor-pointer">
-                  +91 99999 88888
+                  +918349670829
                 </span>
               </div>
               <div className="flex items-center gap-3 group">
                 <MapPin className="h-4 w-4 text-primary group-hover:scale-110 transition-transform" />
                 <span className="group-hover:text-primary transition-colors">
-                  Mumbai, Maharashtra, India
+                  23 Sir M. Visvesvaraya Marg, Indore, Madhya Pradesh 452003, India
                 </span>
               </div>
             </div>
@@ -92,10 +92,7 @@ export const Footer = () => {
 
         {/* Bottom Section */}
         <div className="border-t border-border/50 pt-8 mt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-muted-foreground">
-              © 2024 TaxES. All rights reserved. | Designed with ❤️ for Indian taxpayers
-            </p>
+          <div className="flex flex-col md:flex-row justify-center items-center gap-4">
             <div className="flex gap-6 text-sm text-muted-foreground">
               <span className="hover:text-primary transition-colors cursor-pointer">Privacy</span>
               <span className="hover:text-primary transition-colors cursor-pointer">Terms</span>

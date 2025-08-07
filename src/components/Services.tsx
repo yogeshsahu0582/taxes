@@ -24,12 +24,12 @@ export const Services = () => {
       badge: "Expert"
     },
     {
-      title: "Secure & Compliant Processing",
-      description: "Your sensitive financial data is protected with enterprise-grade security measures while ensuring full compliance with Indian tax regulations and IT department guidelines.",
+      title: "Automate Data Extraction Based Services",
+      description: "Advanced automation technology extracts data from multiple sources with enterprise-grade security measures while ensuring full compliance with Indian tax regulations and IT department guidelines.",
       features: ["256-bit Encryption", "IT Department Approved", "Data Privacy Guarantee", "Audit Trail"],
       icon: Shield,
       image: taxSecurity,
-      badge: "Secure"
+      badge: "Automated"
     }
   ];
 

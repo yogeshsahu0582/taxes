@@ -7,6 +7,9 @@ import { AuthProvider } from "@/hooks/useAuth";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import Index from "./pages/Index";
 import { Dashboard } from "./pages/Dashboard";
+import AutomateITR from "./pages/AutomateITR";
+import Services from "./pages/Services";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -20,6 +23,11 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/automate-itr" element={<AutomateITR />} />
+            <Route path="/automate-itr/*" element={<AutomateITR />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/services/*" element={<Services />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/dashboard" element={
               <ProtectedRoute>
                 <Dashboard />

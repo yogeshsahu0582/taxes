@@ -11,12 +11,10 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, FileText, Calculator, Users, Phone, Home, Upload } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { AuthDialog } from "./AuthDialog";
-import taxesLogo from "@/assets/taxes-logo.png";
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showAuthDialog, setShowAuthDialog] = useState(false);
-  const [authMode, setAuthMode] = useState<'login' | 'signup'>('login');
   const location = useLocation();
   const { user, signOut } = useAuth();
 
@@ -24,7 +22,6 @@ export const Navigation = () => {
     if (user) {
       signOut();
     } else {
-      setAuthMode('login');
       setShowAuthDialog(true);
     }
   };
@@ -62,8 +59,8 @@ export const Navigation = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-2">
-              <img src={taxesLogo} alt="TaxES" className="h-10 w-auto" />
+            <Link to="/" className="text-2xl font-bold text-primary">
+              TaxES
             </Link>
 
             {/* Desktop Navigation */}
@@ -119,17 +116,6 @@ export const Navigation = () => {
               )}
               <Button onClick={handleAuthClick} size="sm">
                 {user ? "Sign Out" : "Sign In"}
-              </Button>
-              <Button 
-                onClick={() => {
-                  setAuthMode('signup');
-                  setShowAuthDialog(true);
-                }} 
-                variant="outline" 
-                size="sm"
-                className="ml-2"
-              >
-                Create Account
               </Button>
             </div>
 
@@ -192,20 +178,6 @@ export const Navigation = () => {
                   >
                     {user ? "Sign Out" : "Sign In"}
                   </Button>
-                  {!user && (
-                    <Button 
-                      onClick={() => {
-                        setAuthMode('signup');
-                        setShowAuthDialog(true);
-                        setIsOpen(false);
-                      }} 
-                      variant="outline"
-                      className="w-full mt-2"
-                      size="sm"
-                    >
-                      Create Account
-                    </Button>
-                  )}
                 </div>
               </div>
             </div>
@@ -216,8 +188,8 @@ export const Navigation = () => {
       <AuthDialog 
         open={showAuthDialog} 
         onOpenChange={setShowAuthDialog}
-        mode={authMode}
-        onModeChange={setAuthMode}
+        mode="login"
+        onModeChange={() => {}}
       />
     </>
   );

@@ -14,28 +14,79 @@ export type Database = {
   }
   public: {
     Tables: {
+      itr_processes: {
+        Row: {
+          created_at: string
+          extracted_data: Json | null
+          form_data: Json | null
+          id: string
+          itr_type: string
+          status: string
+          updated_at: string
+          uploaded_documents: Json | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          extracted_data?: Json | null
+          form_data?: Json | null
+          id?: string
+          itr_type: string
+          status?: string
+          updated_at?: string
+          uploaded_documents?: Json | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          extracted_data?: Json | null
+          form_data?: Json | null
+          id?: string
+          itr_type?: string
+          status?: string
+          updated_at?: string
+          uploaded_documents?: Json | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
           email: string | null
+          email_verified: boolean | null
           full_name: string | null
           id: string
+          mobile_number: string | null
+          mobile_verified: boolean | null
+          otp_code: string | null
+          otp_expires_at: string | null
           phone: string | null
           updated_at: string
         }
         Insert: {
           created_at?: string
           email?: string | null
+          email_verified?: boolean | null
           full_name?: string | null
           id: string
+          mobile_number?: string | null
+          mobile_verified?: boolean | null
+          otp_code?: string | null
+          otp_expires_at?: string | null
           phone?: string | null
           updated_at?: string
         }
         Update: {
           created_at?: string
           email?: string | null
+          email_verified?: boolean | null
           full_name?: string | null
           id?: string
+          mobile_number?: string | null
+          mobile_verified?: boolean | null
+          otp_code?: string | null
+          otp_expires_at?: string | null
           phone?: string | null
           updated_at?: string
         }

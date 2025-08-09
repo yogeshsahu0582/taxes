@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/useAuth";
-import { Mail, AlertCircle } from "lucide-react";
+import { Mail, AlertCircle, X } from "lucide-react";
 
 interface AuthDialogProps {
   open: boolean;
@@ -61,8 +61,16 @@ export const AuthDialog = ({ open, onOpenChange, mode, onModeChange }: AuthDialo
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle className="text-center text-2xl font-bold">
+        <DialogHeader className="relative">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute right-0 top-0 h-8 w-8"
+            onClick={() => onOpenChange(false)}
+          >
+            <X className="h-4 w-4" />
+          </Button>
+          <DialogTitle className="text-center text-2xl font-bold pr-8">
             {mode === 'login' ? 'Welcome Back' : 'Create Account'}
           </DialogTitle>
         </DialogHeader>

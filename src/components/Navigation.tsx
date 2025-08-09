@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, FileText, Calculator, Users, Phone, Home, Upload } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { AuthDialog } from "./AuthDialog";
+import taxesLogo from "@/assets/taxes-logo.png";
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,8 +60,8 @@ export const Navigation = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link to="/" className="text-2xl font-bold text-primary">
-              TaxES
+            <Link to="/" className="flex items-center space-x-2">
+              <img src={taxesLogo} alt="TaxES" className="h-10 w-auto" />
             </Link>
 
             {/* Desktop Navigation */}

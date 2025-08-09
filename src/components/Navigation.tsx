@@ -16,6 +16,7 @@ import taxesLogo from "@/assets/taxes-logo.png";
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showAuthDialog, setShowAuthDialog] = useState(false);
+  const [authMode, setAuthMode] = useState<'login' | 'signup'>('login');
   const location = useLocation();
   const { user, signOut } = useAuth();
 
@@ -23,6 +24,7 @@ export const Navigation = () => {
     if (user) {
       signOut();
     } else {
+      setAuthMode('login');
       setShowAuthDialog(true);
     }
   };
@@ -118,6 +120,17 @@ export const Navigation = () => {
               <Button onClick={handleAuthClick} size="sm">
                 {user ? "Sign Out" : "Sign In"}
               </Button>
+              <Button 
+                onClick={() => {
+                  setAuthMode('signup');
+                  setShowAuthDialog(true);
+                }} 
+                variant="outline" 
+                size="sm"
+                className="ml-2"
+              >
+                Create Account
+              </Button>
             </div>
 
             {/* Mobile menu button */}
@@ -179,6 +192,20 @@ export const Navigation = () => {
                   >
                     {user ? "Sign Out" : "Sign In"}
                   </Button>
+                  {!user && (
+                    <Button 
+                      onClick={() => {
+                        setAuthMode('signup');
+                        setShowAuthDialog(true);
+                        setIsOpen(false);
+                      }} 
+                      variant="outline"
+                      className="w-full mt-2"
+                      size="sm"
+                    >
+                      Create Account
+                    </Button>
+                  )}
                 </div>
               </div>
             </div>
@@ -189,8 +216,8 @@ export const Navigation = () => {
       <AuthDialog 
         open={showAuthDialog} 
         onOpenChange={setShowAuthDialog}
-        mode="login"
-        onModeChange={() => {}}
+        mode={authMode}
+        onModeChange={setAuthMode}
       />
     </>
   );

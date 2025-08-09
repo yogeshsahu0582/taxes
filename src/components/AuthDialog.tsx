@@ -76,34 +76,6 @@ export const AuthDialog = ({ open, onOpenChange, mode, onModeChange }: AuthDialo
         </DialogHeader>
         
         <div className="space-y-6">
-          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-start space-x-3">
-            <AlertCircle className="h-5 w-5 text-amber-600 mt-0.5 flex-shrink-0" />
-            <div className="text-sm text-amber-800">
-              <p className="font-medium">Google OAuth Setup Required</p>
-              <p className="mt-1">Please enable Google provider in Supabase Authentication settings to use Google signup.</p>
-            </div>
-          </div>
-          
-          <Button 
-            variant="outline" 
-            className="w-full h-12 text-base opacity-50 cursor-not-allowed"
-            disabled
-          >
-            <Mail className="mr-2 h-5 w-5" />
-            Continue with Google (Setup Required)
-          </Button>
-          
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t" />
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-muted-foreground">
-                Or continue with email
-              </span>
-            </div>
-          </div>
-
           <form onSubmit={handleSubmit} className="space-y-4">
             {mode === 'signup' && (
               <div>

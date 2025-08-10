@@ -3,6 +3,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { ITRProcessFlow } from "@/components/ITRProcessFlow";
 import { 
   Upload, 
   FileText, 
@@ -11,7 +12,9 @@ import {
   Eye,
   CheckCircle,
   Clock,
-  User
+  User,
+  Sparkles,
+  LogOut
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -93,25 +96,36 @@ export const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-secondary/10 to-accent/5">
-      {/* Header */}
-      <header className="border-b bg-background/80 backdrop-blur-sm sticky top-0 z-50">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/3">
+      {/* Professional Header */}
+      <header className="border-b bg-card/95 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center space-x-4">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              TaxES
-            </h1>
-            <Badge variant="secondary">Dashboard</Badge>
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center">
+                <Sparkles className="w-4 h-4 text-white" />
+              </div>
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                TaxES Pro
+              </h1>
+            </div>
+            <Badge variant="secondary" className="bg-primary/10 text-primary">
+              Professional Dashboard
+            </Badge>
           </div>
           
           <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-2">
-              <User className="h-4 w-4" />
-              <span className="text-sm text-muted-foreground">
-                Welcome, {user?.email}
-              </span>
+            <div className="flex items-center space-x-3 px-3 py-2 bg-muted/50 rounded-lg">
+              <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                <User className="h-4 w-4 text-primary" />
+              </div>
+              <div className="text-sm">
+                <div className="font-medium">{user?.user_metadata?.full_name || "Professional User"}</div>
+                <div className="text-muted-foreground text-xs">{user?.email}</div>
+              </div>
             </div>
-            <Button variant="outline" size="sm" onClick={handleSignOut}>
+            <Button variant="outline" size="sm" onClick={handleSignOut} className="flex items-center gap-2">
+              <LogOut className="h-4 w-4" />
               Sign Out
             </Button>
           </div>
@@ -119,13 +133,20 @@ export const Dashboard = () => {
       </header>
 
       <div className="container py-8">
+        {/* ITR Process Flow */}
+        <div className="mb-12">
+          <ITRProcessFlow />
+        </div>
+
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Upload Section */}
           <div className="lg:col-span-2 space-y-6">
-            <div>
-              <h2 className="text-3xl font-bold mb-2">Upload Documents</h2>
+            <div className="text-center lg:text-left">
+              <h2 className="text-3xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                Document Management Center
+              </h2>
               <p className="text-muted-foreground">
-                Upload your tax documents to get started with automated ITR filing
+                Upload your tax documents to our secure, enterprise-grade platform for automated ITR processing
               </p>
             </div>
 
@@ -134,16 +155,16 @@ export const Dashboard = () => {
                 const uploadedFile = uploadedFiles.find(f => f.type === docType.id);
                 
                 return (
-                  <Card key={docType.id} className="group hover:shadow-lg transition-all duration-300">
+                  <Card key={docType.id} className="professional-card group">
                     <CardHeader>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-3">
-                          <div className={`p-3 rounded-lg bg-gradient-to-br from-primary/10 to-accent/10`}>
-                            <docType.icon className={`h-6 w-6 ${docType.color}`} />
+                          <div className="p-3 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 group-hover:from-primary/20 group-hover:to-accent/20 transition-all duration-300">
+                            <docType.icon className={`h-6 w-6 ${docType.color} group-hover:scale-110 transition-transform duration-300`} />
                           </div>
                           <div>
-                            <CardTitle className="text-lg">{docType.name}</CardTitle>
-                            <CardDescription>{docType.description}</CardDescription>
+                            <CardTitle className="text-lg font-semibold">{docType.name}</CardTitle>
+                            <CardDescription className="text-sm">{docType.description}</CardDescription>
                           </div>
                         </div>
                         
@@ -155,9 +176,9 @@ export const Dashboard = () => {
                             </Badge>
                           </div>
                         ) : (
-                          <Badge variant="outline">
+                          <Badge variant="outline" className="border-amber-200 text-amber-700 bg-amber-50">
                             <Clock className="h-3 w-3 mr-1" />
-                            Pending
+                            Pending Upload
                           </Badge>
                         )}
                       </div>
@@ -183,15 +204,17 @@ export const Dashboard = () => {
                           </Button>
                         </div>
                       ) : (
-                        <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-8 text-center group-hover:border-primary/50 transition-colors">
-                          <Upload className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-                          <p className="text-sm font-medium mb-2">Upload PDF Document</p>
-                          <p className="text-xs text-muted-foreground mb-4">
-                            Click to browse or drag and drop (Max 10MB)
+                        <div className="border-2 border-dashed border-muted-foreground/25 rounded-xl p-8 text-center group-hover:border-primary/50 group-hover:bg-primary/5 transition-all duration-300">
+                          <div className="w-16 h-16 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <Upload className="h-8 w-8 text-primary" />
+                          </div>
+                          <p className="text-sm font-semibold mb-2">Upload Secure PDF Document</p>
+                          <p className="text-xs text-muted-foreground mb-6">
+                            Enterprise-grade security • Max 10MB • Encrypted storage
                           </p>
                           <label htmlFor={`upload-${docType.id}`} className="cursor-pointer">
-                            <Button variant="outline" size="sm" asChild>
-                              <span>Choose File</span>
+                            <Button variant="outline" size="sm" className="hover:bg-primary hover:text-primary-foreground transition-all duration-300" asChild>
+                              <span>Choose Professional File</span>
                             </Button>
                           </label>
                           <input
@@ -210,16 +233,24 @@ export const Dashboard = () => {
             </div>
 
             {uploadedFiles.length > 0 && (
-              <Card className="mt-8">
+              <Card className="mt-8 professional-card border-green-200 bg-gradient-to-r from-green-50 to-emerald-50">
                 <CardHeader>
-                  <CardTitle>Ready to Process</CardTitle>
-                  <CardDescription>
-                    All documents uploaded successfully. Ready for ITR processing.
-                  </CardDescription>
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center">
+                      <CheckCircle className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-green-800">Professional Processing Ready</CardTitle>
+                      <CardDescription className="text-green-600">
+                        All documents uploaded securely. Enterprise AI processing available.
+                      </CardDescription>
+                    </div>
+                  </div>
                 </CardHeader>
                 <CardContent>
-                  <Button size="lg" className="w-full bg-gradient-to-r from-primary to-accent">
-                    Start ITR Processing
+                  <Button size="lg" className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-lg hover:shadow-xl transition-all duration-300">
+                    <Sparkles className="w-5 h-5 mr-2" />
+                    Start Professional ITR Processing
                   </Button>
                 </CardContent>
               </Card>

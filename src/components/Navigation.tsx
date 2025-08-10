@@ -58,9 +58,14 @@ export const Navigation = () => {
       <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <Link to="/" className="text-2xl font-bold text-primary">
-              TaxES
+            {/* Professional Logo */}
+            <Link to="/" className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center">
+                <FileText className="w-4 h-4 text-white" />
+              </div>
+              <span className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                TaxES Pro
+              </span>
             </Link>
 
             {/* Desktop Navigation */}
@@ -114,8 +119,8 @@ export const Navigation = () => {
                   </Button>
                 </Link>
               )}
-              <Button onClick={handleAuthClick} size="sm">
-                {user ? "Sign Out" : "Sign In"}
+              <Button onClick={handleAuthClick} size="sm" className="bg-gradient-to-r from-primary to-accent hover:shadow-glow transition-all duration-300">
+                {user ? "Sign Out" : "Professional Access"}
               </Button>
             </div>
 

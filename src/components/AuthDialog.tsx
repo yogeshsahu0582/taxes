@@ -22,7 +22,28 @@ export const AuthDialog = ({ open, onOpenChange, mode, onModeChange }: AuthDialo
   const [loading, setLoading] = useState(false);
   const [showMobileVerification, setShowMobileVerification] = useState(false);
   const { toast } = useToast();
-  const { signUp, signIn } = useAuth();
+  const { signUp, signIn, signInWithGoogle } = useAuth();
+
+  const handleGoogleSignIn = async () => {
+    setLoading(true);
+    try {
+      const { error } = await signInWithGoogle();
+      if (error) throw error;
+      
+      toast({
+        title: "Redirecting...",
+        description: "You'll be redirected to Google for authentication.",
+      });
+    } catch (error: any) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: error.message,
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -105,6 +126,27 @@ export const AuthDialog = ({ open, onOpenChange, mode, onModeChange }: AuthDialo
               </div>
               <p className="text-sm font-medium">Secure & Professional Platform</p>
               <p className="text-xs text-muted-foreground">Your data is protected with enterprise-grade security</p>
+            </div>
+          </div>
+
+          <Button 
+            onClick={handleGoogleSignIn}
+            variant="outline" 
+            className="w-full h-12 text-base border-2 hover:bg-primary/5 transition-all duration-300"
+            disabled={loading}
+          >
+            <Mail className="mr-2 h-5 w-5" />
+            Continue with Google
+          </Button>
+          
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-background px-2 text-muted-foreground">
+                Or continue with email
+              </span>
             </div>
           </div>
 

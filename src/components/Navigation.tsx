@@ -29,28 +29,28 @@ export const Navigation = () => {
   const navItems = [
     { name: "Home", href: "/", icon: Home },
     {
-      name: "Automate ITR Data Extract",
+      name: "ITR Forms",
       href: "/automate-itr",
       icon: Calculator,
       subItems: [
-        { name: "ITR-1 Form", href: "/automate-itr/itr-1" },
-        { name: "ITR-2 Form", href: "/automate-itr/itr-2" },
-        { name: "ITR-3 Form", href: "/automate-itr/itr-3" },
-        { name: "ITR-4 Form", href: "/automate-itr/itr-4" },
+        { name: "ITR-1 Form - Salary Income", href: "/automate-itr/itr-1" },
+        { name: "ITR-2 Form - Capital Gains", href: "/automate-itr/itr-2" },
+        { name: "ITR-3 Form - Business Income", href: "/automate-itr/itr-3" },
+        { name: "ITR-4 Form - Presumptive Scheme", href: "/automate-itr/itr-4" },
       ]
     },
     {
-      name: "Services",
+      name: "Professional Services",
       href: "/services",
       icon: Users,
       subItems: [
-        { name: "Tax Filing", href: "/services/tax-filing" },
-        { name: "Tax Planning", href: "/services/tax-planning" },
-        { name: "Business Registration", href: "/services/business-registration" },
-        { name: "GST Services", href: "/services/gst" },
+        { name: "Income Tax Filing", href: "/services/tax-filing" },
+        { name: "Tax Planning & Advisory", href: "/services/tax-planning" },
+        { name: "Company Registration", href: "/services/business-registration" },
+        { name: "GST Calculator", href: "/gst-calculator" },
       ]
     },
-    { name: "Contact Us", href: "/contact", icon: Phone },
+    { name: "Contact Support", href: "/contact", icon: Phone },
   ];
 
   return (

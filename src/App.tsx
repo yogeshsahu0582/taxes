@@ -11,6 +11,7 @@ import AutomateITR from "./pages/AutomateITR";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import { GSTCalculator } from "./components/GSTCalculator";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
             <Route path="/automate-itr/*" element={<AutomateITR />} />
             <Route path="/services" element={<Services />} />
             <Route path="/services/*" element={<Services />} />
+            <Route path="/gst-calculator" element={<GSTCalculator />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/dashboard" element={
               <ProtectedRoute>

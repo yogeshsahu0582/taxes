@@ -40,27 +40,27 @@ export const Footer = () => {
             </div>
           </div>
 
-          {/* Services */}
+          {/* ITR Forms */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-foreground">Services</h4>
+            <h4 className="text-lg font-semibold text-foreground">ITR Forms</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li className="hover:text-primary transition-colors cursor-pointer">Automate ITR Data Extract</li>
-              <li className="hover:text-primary transition-colors cursor-pointer">Tax Consultation</li>
-              <li className="hover:text-primary transition-colors cursor-pointer">Document Management</li>
-              <li className="hover:text-primary transition-colors cursor-pointer">Compliance Review</li>
-              <li className="hover:text-primary transition-colors cursor-pointer">Tax Planning</li>
+              <li className="hover:text-primary transition-colors cursor-pointer">ITR-1 Salary Income</li>
+              <li className="hover:text-primary transition-colors cursor-pointer">ITR-2 Capital Gains</li>
+              <li className="hover:text-primary transition-colors cursor-pointer">ITR-3 Business Income</li>
+              <li className="hover:text-primary transition-colors cursor-pointer">ITR-4 Presumptive</li>
+              <li className="hover:text-primary transition-colors cursor-pointer">GST Calculator</li>
             </ul>
           </div>
 
-          {/* Support */}
+          {/* Professional Services */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-foreground">Support</h4>
+            <h4 className="text-lg font-semibold text-foreground">Professional Services</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li className="hover:text-primary transition-colors cursor-pointer">Help Center</li>
-              <li className="hover:text-primary transition-colors cursor-pointer">Contact Us</li>
-              <li className="hover:text-primary transition-colors cursor-pointer">About Us</li>
-              <li className="hover:text-primary transition-colors cursor-pointer">Privacy Policy</li>
-              <li className="hover:text-primary transition-colors cursor-pointer">Terms of Service</li>
+              <li className="hover:text-primary transition-colors cursor-pointer">Tax Planning</li>
+              <li className="hover:text-primary transition-colors cursor-pointer">Business Registration</li>
+              <li className="hover:text-primary transition-colors cursor-pointer">Expert Consultation</li>
+              <li className="hover:text-primary transition-colors cursor-pointer">Compliance Review</li>
+              <li className="hover:text-primary transition-colors cursor-pointer">Document Management</li>
             </ul>
           </div>
 
